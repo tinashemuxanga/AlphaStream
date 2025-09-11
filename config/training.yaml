@@ -1,0 +1,105 @@
+# AlphaStream Training Configuration
+
+# Data Configuration
+symbols:
+  - AAPL
+  - GOOGL
+  - MSFT
+  - AMZN
+  - TSLA
+
+start_date: "2020-01-01"
+end_date: "2024-01-01"
+
+# Feature Engineering
+features:
+  groups:
+    - technical_indicators
+    - price_patterns
+    - volume_features
+    - microstructure
+    - statistical
+  
+  min_history: 200  # Minimum bars for feature calculation
+  
+# Target Configuration  
+target:
+  type: classification  # classification or regression
+  horizon: 1  # Prediction horizon in days
+  threshold: 0.002  # Return threshold for classification (0.2%)
+  
+# Model Configuration
+models:
+  - type: random_forest
+    task_type: classification
+    params:
+      n_estimators: 200
+      max_depth: 10
+      min_samples_split: 10
+      
+  - type: xgboost
+    task_type: classification
+    params:
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.1
+      
+  - type: lightgbm
+    task_type: classification
+    params:
+      n_estimators: 200
+      num_leaves: 31
+      learning_rate: 0.1
+      
+  - type: ensemble
+    task_type: classification
+    params:
+      voting: soft
+      
+# Training Configuration
+training:
+  use_walk_forward: true
+  n_splits: 5
+  train_ratio: 0.8
+  validation_size: 0.2
+  
+  # Hyperparameter Tuning
+  tune_hyperparameters: false
+  n_trials: 100
+  optimization_metric: f1
+  
+  # Feature Selection
+  select_features: true
+  n_features: 100
+  selection_method: mutual_info
+  
+# Experiment Tracking
+tracking:
+  use_wandb: true
+  use_mlflow: false
+  project_name: alphastream
+  tags:
+    - production
+    - ml
+    - trading
+    
+# Backtesting Configuration
+backtest:
+  initial_capital: 100000
+  commission: 0.001  # 0.1%
+  slippage: 0.0005  # 0.05%
+  max_positions: 10
+  position_size_method: equal_weight  # equal_weight, signal_weighted, volatility_scaled, kelly
+  
+  # Risk Management
+  stop_loss: 0.02  # 2%
+  take_profit: 0.05  # 5%
+  trailing_stop: 0.015  # 1.5%
+  
+# Output Configuration
+output:
+  models_dir: models
+  results_dir: results
+  reports_dir: reports
+  save_predictions: true
+  save_feature_importance: true

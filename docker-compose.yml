@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: alphastream-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - alphastream-network
+
+  # API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alphastream-api
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - POLYGON_API_KEY=${POLYGON_API_KEY}
+      - ALPHA_VANTAGE_API_KEY=${ALPHA_VANTAGE_API_KEY}
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./results:/app/results
+    depends_on:
+      - redis
+    networks:
+      - alphastream-network
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Jupyter notebook for research
+  notebook:
+    image: jupyter/scipy-notebook:latest
+    container_name: alphastream-notebook
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/data
+      - ./models:/home/jovyan/models
+    networks:
+      - alphastream-network
+
+volumes:
+  redis_data:
+
+networks:
+  alphastream-network:
+    driver: bridge
