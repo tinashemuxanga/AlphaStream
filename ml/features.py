@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 from typing import Dict, List, Optional, Tuple, Any
 import ta
-import pandas_ta as ta_extended
+# import pandas_ta as pta  # Optional: Install if needed
 from scipy import stats
 from sklearn.preprocessing import StandardScaler, RobustScaler
 import warnings

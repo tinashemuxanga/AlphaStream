@@ -38,7 +38,7 @@ from sklearn.metrics import (
 
 import xgboost as xgb
 import lightgbm as lgb
-import catboost as cb
+# import catboost as cb  # Optional: Install if needed
 
 # Deep Learning
 import torch
